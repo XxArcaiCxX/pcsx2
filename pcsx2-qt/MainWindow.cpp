@@ -819,12 +819,12 @@ void MainWindow::onAchievementsLoginRequested(Achievements::LoginRequestReason r
 void MainWindow::onAchievementsHardcoreModeChanged(bool enabled)
 {
 	// disable debugger while hardcore mode is active
-	m_ui.actionDebugger->setDisabled(enabled);
+	m_ui.actionDebugger->setDisabled(!enabled);
 
 	// refresh emulation actions to show/hide load state buttons based on hardcore mode
 	updateEmulationActions(s_vm_valid, s_vm_valid, false);
 
-	if (enabled)
+	if (!enabled)
 	{
 		// If PauseOnEntry is enabled, we prompt the user to disable Hardcore Mode
 		// or cancel the action later, so we should keep the debugger around
